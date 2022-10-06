@@ -1,0 +1,24 @@
+package exceljava;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class BasicExcel 
+{
+	public static void main(String[] args) throws IOException
+	{
+		String path="D:\\Selenium Notes\\Code\\spreadsheet.xlsx";
+		FileInputStream fis=new FileInputStream(path);
+		XSSFWorkbook book=new XSSFWorkbook(fis);
+		//int i=book.getNumberOfSheets();
+		
+		XSSFSheet sheet=book.getSheetAt(0);
+		
+		
+		System.out.println(sheet.getSheetName());
+	}
+		
+}

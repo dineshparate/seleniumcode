@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+	<properties>
+		<Property name="basefile">./logs</Property>
+	</properties>
+	
+	<Appenders>
+		<!-- Write the log in the file code-->
+		<RollingFile name="File" fileName="${basefile}/prints.log" filePattern="${basefile}/prints-%d{yyyy-MM-dd}.log">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+			<SizeBasedTriggeringPolicy size="500" />
+		</RollingFile>
+
+		<!-- Write the code in the console-->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		
+	</Appenders>
+	
+	<!-- Package level execution in the program -->
+	<Loggers>
+		<Logger name="alpha.Demo" level="error" additivity="false">
+			<AppenderRef ref="File" />
+		</Logger>
+
+		<Root level="trace">
+			<AppenderRef ref="File" />
+		</Root>
+
+	</Loggers>
+</Configuration>
